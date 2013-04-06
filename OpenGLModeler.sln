@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGLModeler", "OpenGLModeler\OpenGLModeler.vcproj", "{E3BA9893-B9BF-4C08-9D7E-2DA9B7ECA099}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenGLModeler", "OpenGLModeler\OpenGLModeler.vcxproj", "{E3BA9893-B9BF-4C08-9D7E-2DA9B7ECA099}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
