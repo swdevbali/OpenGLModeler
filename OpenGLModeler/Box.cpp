@@ -17,6 +17,9 @@ CBox::CBox(void)
 	glEnable(GL_NORMALIZE);
 	
 	//System::Diagnostics::Debug::WriteLine(*texture);
+	this->y=0.5f; // to make it in plane
+	this->x=0.5f;
+	this->z=-0.5f;
 }
 
 void CBox::draw() {	

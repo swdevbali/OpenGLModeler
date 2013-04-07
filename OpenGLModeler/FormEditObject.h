@@ -63,8 +63,8 @@ namespace OpenGLModeler {
 		this->trkSkalaZ->Value=obj->z_scale;
 
 		//texture
-		this->picFilename->Text = obj->filename;
-
+		txtFilename->Text=obj->filename;
+		this->picFilename->Load(txtFilename->Text);
 
 /*			prevTrkX=trkX->Value;
 		prevTrkY=trkY->Value;
@@ -443,8 +443,7 @@ private: System::Windows::Forms::Label^  label4;
 			// trkSkalaZ
 			// 
 			this->trkSkalaZ->Location = System::Drawing::Point(46, 139);
-			this->trkSkalaZ->Maximum = 25;
-			this->trkSkalaZ->Minimum = 1;
+			this->trkSkalaZ->Minimum = -10;
 			this->trkSkalaZ->Name = L"trkSkalaZ";
 			this->trkSkalaZ->Size = System::Drawing::Size(205, 45);
 			this->trkSkalaZ->SmallChange = 45;
@@ -464,8 +463,7 @@ private: System::Windows::Forms::Label^  label4;
 			// trkSkalaY
 			// 
 			this->trkSkalaY->Location = System::Drawing::Point(46, 88);
-			this->trkSkalaY->Maximum = 25;
-			this->trkSkalaY->Minimum = 1;
+			this->trkSkalaY->Minimum = -10;
 			this->trkSkalaY->Name = L"trkSkalaY";
 			this->trkSkalaY->Size = System::Drawing::Size(205, 45);
 			this->trkSkalaY->SmallChange = 45;
@@ -724,11 +722,9 @@ private: System::Void txtZ_ValueChanged(System::Object^  sender, System::EventAr
 		 }
 private: System::Void btnBrowse_Click(System::Object^  sender, System::EventArgs^  e) {
 			openFileDialog1->Title = "Graphic images";
-            openFileDialog1->Filter = "PNG|*.png| JPG, JPEG|*.jpg";
+            openFileDialog1->Filter = "PNG|*.png| JPG, JPEG|*.jpg | BMP|*.bmp";
 			if (openFileDialog1->ShowDialog() == System::Windows::Forms::DialogResult::OK)
             {	
-				
-				//openFile(openFileDialog1->FileName);
 				txtFilename->Text=openFileDialog1->FileName;
 				this->picFilename->Load(txtFilename->Text);
 				selectedObject->filename=txtFilename->Text;

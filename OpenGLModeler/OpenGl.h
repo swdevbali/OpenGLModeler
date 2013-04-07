@@ -250,7 +250,7 @@ namespace OpenGLForm
 				case 1:					
 					gluPerspective(45.0f,(GLfloat)width/(GLfloat)height,0.1f,100.0f); 
 					gluLookAt(
-						-4,4,4,//eye
+						-2,2,2,//eye -4,4,4,
 						0,0,0,//center
 						0,1,0);//up
 					break;
@@ -264,7 +264,7 @@ namespace OpenGLForm
 				case 3://top
 					glOrtho(-2,2,-2,2,-50,50);
 					gluLookAt(
-						0,2,0,//eye
+						0,2,0,//eye 0,2,0,
 						0,0,0,//center, 0
 						0,0,-1);//up
 					break;
