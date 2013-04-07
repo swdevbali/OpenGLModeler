@@ -118,7 +118,7 @@
     <ClCompile Include="DrawObject.cpp" />
     <ClCompile Include="FormEditObject.cpp" />
     <ClCompile Include="Graphic.cpp" />
-    <ClCompile Include="OpenGLModeler.cpp" />
+    <ClCompile Include="Program.cpp" />
     <ClCompile Include="Piramid.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -152,6 +152,8 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <Image Include="..\..\..\..\downloads\icon2.ico" />
+    <Image Include="..\..\..\..\Downloads\SwdevHome.ico" />
     <Image Include="app.ico" />
     <Image Include="buzzgui.ico" />
     <Image Include="delete.gif">

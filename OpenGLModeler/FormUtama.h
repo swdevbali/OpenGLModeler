@@ -1,5 +1,6 @@
 #pragma once
 
+#include "resource.h"
 #include "OpenGL.h"
 #include "Piramid.h"
 #include "Box.h"
@@ -23,6 +24,10 @@ namespace OpenGLModeler {
 	using namespace System::Text;
 	using namespace System::Xml;
 	using namespace OpenGLForm;
+
+	using namespace System::Reflection;
+	using namespace System::Runtime::InteropServices;
+	using namespace System::Drawing;
 
 	/// <summary>
 	/// Summary for Form1
@@ -160,9 +165,9 @@ namespace OpenGLModeler {
 			this->saveToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->toolStripMenuItem1 = (gcnew System::Windows::Forms::ToolStripSeparator());
 			this->exitToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->viewToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->helpToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->aboutToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
-			this->viewToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->statusStrip1 = (gcnew System::Windows::Forms::StatusStrip());
 			this->toolStripStatusLabel1 = (gcnew System::Windows::Forms::ToolStripStatusLabel());
 			this->toolStrip1 = (gcnew System::Windows::Forms::ToolStrip());
@@ -182,11 +187,11 @@ namespace OpenGLModeler {
 			this->torusToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->coneToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->cylinderToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
+			this->diskToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			this->toolStripButton2 = (gcnew System::Windows::Forms::ToolStripButton());
 			this->toolStripButton3 = (gcnew System::Windows::Forms::ToolStripButton());
 			this->openFileDialog1 = (gcnew System::Windows::Forms::OpenFileDialog());
 			this->saveFileDialog1 = (gcnew System::Windows::Forms::SaveFileDialog());
-			this->diskToolStripMenuItem = (gcnew System::Windows::Forms::ToolStripMenuItem());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->picPerspective))->BeginInit();
 			this->menuStrip1->SuspendLayout();
 			this->statusStrip1->SuspendLayout();
@@ -218,7 +223,7 @@ namespace OpenGLModeler {
 			// menuStrip1
 			// 
 			this->menuStrip1->Items->AddRange(gcnew cli::array< System::Windows::Forms::ToolStripItem^  >(3) {this->fileToolStripMenuItem, 
-				this->helpToolStripMenuItem, this->viewToolStripMenuItem});
+				this->viewToolStripMenuItem, this->helpToolStripMenuItem});
 			this->menuStrip1->Location = System::Drawing::Point(0, 0);
 			this->menuStrip1->Name = L"menuStrip1";
 			this->menuStrip1->Size = System::Drawing::Size(890, 24);
@@ -279,6 +284,13 @@ namespace OpenGLModeler {
 			this->exitToolStripMenuItem->Name = L"exitToolStripMenuItem";
 			this->exitToolStripMenuItem->Size = System::Drawing::Size(120, 22);
 			this->exitToolStripMenuItem->Text = L"E&xit";
+			this->exitToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::exitToolStripMenuItem_Click);
+			// 
+			// viewToolStripMenuItem
+			// 
+			this->viewToolStripMenuItem->Name = L"viewToolStripMenuItem";
+			this->viewToolStripMenuItem->Size = System::Drawing::Size(44, 20);
+			this->viewToolStripMenuItem->Text = L"&View";
 			// 
 			// helpToolStripMenuItem
 			// 
@@ -292,12 +304,6 @@ namespace OpenGLModeler {
 			this->aboutToolStripMenuItem->Name = L"aboutToolStripMenuItem";
 			this->aboutToolStripMenuItem->Size = System::Drawing::Size(107, 22);
 			this->aboutToolStripMenuItem->Text = L"&About";
-			// 
-			// viewToolStripMenuItem
-			// 
-			this->viewToolStripMenuItem->Name = L"viewToolStripMenuItem";
-			this->viewToolStripMenuItem->Size = System::Drawing::Size(44, 20);
-			this->viewToolStripMenuItem->Text = L"&View";
 			// 
 			// statusStrip1
 			// 
@@ -434,14 +440,14 @@ namespace OpenGLModeler {
 			// boxToolStripMenuItem1
 			// 
 			this->boxToolStripMenuItem1->Name = L"boxToolStripMenuItem1";
-			this->boxToolStripMenuItem1->Size = System::Drawing::Size(152, 22);
+			this->boxToolStripMenuItem1->Size = System::Drawing::Size(118, 22);
 			this->boxToolStripMenuItem1->Text = L"&Box";
 			this->boxToolStripMenuItem1->Click += gcnew System::EventHandler(this, &Form1::boxToolStripMenuItem1_Click);
 			// 
 			// pyramidToolStripMenuItem1
 			// 
 			this->pyramidToolStripMenuItem1->Name = L"pyramidToolStripMenuItem1";
-			this->pyramidToolStripMenuItem1->Size = System::Drawing::Size(152, 22);
+			this->pyramidToolStripMenuItem1->Size = System::Drawing::Size(118, 22);
 			this->pyramidToolStripMenuItem1->Text = L"&Pyramid";
 			this->pyramidToolStripMenuItem1->Visible = false;
 			this->pyramidToolStripMenuItem1->Click += gcnew System::EventHandler(this, &Form1::pyramidToolStripMenuItem1_Click);
@@ -449,37 +455,44 @@ namespace OpenGLModeler {
 			// ballToolStripMenuItem
 			// 
 			this->ballToolStripMenuItem->Name = L"ballToolStripMenuItem";
-			this->ballToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->ballToolStripMenuItem->Size = System::Drawing::Size(118, 22);
 			this->ballToolStripMenuItem->Text = L"B&all";
 			this->ballToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::ballToolStripMenuItem_Click);
 			// 
 			// teaPotToolStripMenuItem
 			// 
 			this->teaPotToolStripMenuItem->Name = L"teaPotToolStripMenuItem";
-			this->teaPotToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->teaPotToolStripMenuItem->Size = System::Drawing::Size(118, 22);
 			this->teaPotToolStripMenuItem->Text = L"&Tea Pot";
 			this->teaPotToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::teaPotToolStripMenuItem_Click);
 			// 
 			// torusToolStripMenuItem
 			// 
 			this->torusToolStripMenuItem->Name = L"torusToolStripMenuItem";
-			this->torusToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->torusToolStripMenuItem->Size = System::Drawing::Size(118, 22);
 			this->torusToolStripMenuItem->Text = L"&Torus";
 			this->torusToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::torusToolStripMenuItem_Click);
 			// 
 			// coneToolStripMenuItem
 			// 
 			this->coneToolStripMenuItem->Name = L"coneToolStripMenuItem";
-			this->coneToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->coneToolStripMenuItem->Size = System::Drawing::Size(118, 22);
 			this->coneToolStripMenuItem->Text = L"&Cone";
 			this->coneToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::coneToolStripMenuItem_Click);
 			// 
 			// cylinderToolStripMenuItem
 			// 
 			this->cylinderToolStripMenuItem->Name = L"cylinderToolStripMenuItem";
-			this->cylinderToolStripMenuItem->Size = System::Drawing::Size(152, 22);
+			this->cylinderToolStripMenuItem->Size = System::Drawing::Size(118, 22);
 			this->cylinderToolStripMenuItem->Text = L"Cylinder";
 			this->cylinderToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::cylinderToolStripMenuItem_Click);
+			// 
+			// diskToolStripMenuItem
+			// 
+			this->diskToolStripMenuItem->Name = L"diskToolStripMenuItem";
+			this->diskToolStripMenuItem->Size = System::Drawing::Size(118, 22);
+			this->diskToolStripMenuItem->Text = L"Disk";
+			this->diskToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::diskToolStripMenuItem_Click);
 			// 
 			// toolStripButton2
 			// 
@@ -503,13 +516,6 @@ namespace OpenGLModeler {
 			// 
 			this->openFileDialog1->FileName = L"openFileDialog1";
 			// 
-			// diskToolStripMenuItem
-			// 
-			this->diskToolStripMenuItem->Name = L"diskToolStripMenuItem";
-			this->diskToolStripMenuItem->Size = System::Drawing::Size(152, 22);
-			this->diskToolStripMenuItem->Text = L"Disk";
-			this->diskToolStripMenuItem->Click += gcnew System::EventHandler(this, &Form1::diskToolStripMenuItem_Click);
-			// 
 			// Form1
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -522,7 +528,8 @@ namespace OpenGLModeler {
 			this->MainMenuStrip = this->menuStrip1;
 			this->Name = L"Form1";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"OpenGL Modeler by Arief Isdiyantoro";
+			this->Text = L"[[Title]]";
+			this->Load += gcnew System::EventHandler(this, &Form1::Form1_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^  >(this->picPerspective))->EndInit();
 			this->menuStrip1->ResumeLayout(false);
 			this->menuStrip1->PerformLayout();
@@ -791,6 +798,17 @@ private: System::Void diskToolStripMenuItem_Click(System::Object^  sender, Syste
 			 daftarObject->Add(id, gcnew CDisk());
 			 treeView1->Nodes[0]->Nodes->Add(id);
 			 treeView1->Nodes[0]->Expand();
+		 }
+private: System::Void exitToolStripMenuItem_Click(System::Object^  sender, System::EventArgs^  e) {
+			 Environment::Exit(0);
+		 }
+private: System::Void Form1_Load(System::Object^  sender, System::EventArgs^  e) {
+			Text = Application::ProductName + " version " + Application::ProductVersion;
+
+			Module ^ mod = Assembly::GetExecutingAssembly()->GetModules()[0];
+			IntPtr hinst = Marshal::GetHINSTANCE(mod);
+			HICON hic = LoadIcon((HINSTANCE) hinst.ToPointer(), MAKEINTRESOURCE(IDI_ICON1));
+			Icon = Icon->FromHandle(IntPtr(hic));
 		 }
 };
 }

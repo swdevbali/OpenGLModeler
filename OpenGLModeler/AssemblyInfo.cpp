@@ -11,12 +11,12 @@ using namespace System::Security::Permissions;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 //
-[assembly:AssemblyTitleAttribute("OpenGLModeler")];
-[assembly:AssemblyDescriptionAttribute("")];
+[assembly:AssemblyTitleAttribute("Swdev Home 3D")];
+[assembly:AssemblyDescriptionAttribute("Let's code for yourself Bro!")];
 [assembly:AssemblyConfigurationAttribute("")];
-[assembly:AssemblyCompanyAttribute("Arief Isdiyantoro")];
-[assembly:AssemblyProductAttribute("OpenGLModeler")];
-[assembly:AssemblyCopyrightAttribute("Copyright (c) Arief Isdiyantoro 2010")];
+[assembly:AssemblyCompanyAttribute("Eko S. Wibowo")];
+[assembly:AssemblyProductAttribute("Swdev Home 3D")];
+[assembly:AssemblyCopyrightAttribute("Copyright (c) Eko S. Wibowo 2013")];
 [assembly:AssemblyTrademarkAttribute("")];
 [assembly:AssemblyCultureAttribute("")];
 
@@ -31,7 +31,7 @@ using namespace System::Security::Permissions;
 // You can specify all the value or you can default the Revision and Build Numbers
 // by using the '*' as shown below:
 
-[assembly:AssemblyVersionAttribute("1.0.*")];
+[assembly:AssemblyVersionAttribute("1.0.0.1")];
 
 [assembly:ComVisible(false)];
 
